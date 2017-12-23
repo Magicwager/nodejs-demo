@@ -1,0 +1,22 @@
+{
+  "name": "file-copy-fs",
+  "version": "1.0.0",
+  "description": "copy file",
+  "main": "./lib/file-copy-fs",
+  "bin": {
+    "file-copy-fs": "fcopy-fs.js"
+  },
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "copy",
+    "fs"
+  ],
+  "author": "magicwager",
+  "license": "ISC"
+}
