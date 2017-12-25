@@ -1,7 +1,7 @@
 const fs=require('fs');
 const filepath="/Users/wujian/Documents/github/nodejs-demo/npm-packages/file-copy-fs/lib/test.js";
 /* fs操作的测试文件目录，通过fs.mkdir创建 */
-const baseUrl="/Users/wujian/Documents/github/nodejs-demo/test/testfiles"
+const baseUrl=__dirname+'/testfiles';
 /* 创建文件目录 */
 /* fs.mkdir(baseUrl,(error)=>{
   if(error) throw error;
@@ -31,6 +31,11 @@ fs.open(baseUrl+'/hello.txt', 'w+', (err, fd) => {
   console.log('成功打开文件')
 
 });
+fs.copyFileSync(baseUrl+'/hello.txt',baseUrl+'/helloCopy.txt')
+fs.copyFile(baseUrl+'/hello.txt',baseUrl+'/helloCopy.txt',(err)=>{
+  if(err) throw err.code;
+  console.log("复制成功！")
+})
 
 /* 重命名，如果重复则合并 */
 fs.rename(baseUrl+'/hello.txt',baseUrl+'/helloNew.txt',(err)=>{
