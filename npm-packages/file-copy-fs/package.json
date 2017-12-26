@@ -1,10 +1,11 @@
 {
   "name": "file-copy-fs",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "copy file",
   "main": "./lib/file-copy-fs",
   "bin": {
-    "fscopy": "./bin/fcopy-fs.js"
+    "fsscopy": "./bin/scopy.js",
+    "fslcopy": "./bin/lcopy.js"
   },
   "directories": {
     "lib": "lib",
