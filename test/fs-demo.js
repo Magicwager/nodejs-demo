@@ -7,6 +7,7 @@ const baseUrl=__dirname+'/testfiles';
   if(error) throw error;
   console.log('成功创建文件目录'+baseUrl)
 }) */
+
 /* 向文件追加数据，如果目录下没有指定文件则创建文件。但是如果指定的目录都没有则会报错 */
 fs.appendFile(baseUrl+'/hello.txt','hello world',(err)=>{
   if(err) throw err;
@@ -31,11 +32,7 @@ fs.open(baseUrl+'/hello.txt', 'w+', (err, fd) => {
   console.log('成功打开文件')
 
 });
-fs.copyFileSync(baseUrl+'/hello.txt',baseUrl+'/helloCopy.txt')
-fs.copyFile(baseUrl+'/hello.txt',baseUrl+'/helloCopy.txt',(err)=>{
-  if(err) throw err.code;
-  console.log("复制成功！")
-})
+
 
 /* 重命名，如果重复则合并 */
 fs.rename(baseUrl+'/hello.txt',baseUrl+'/helloNew.txt',(err)=>{

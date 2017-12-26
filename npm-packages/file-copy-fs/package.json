@@ -4,7 +4,7 @@
   "description": "copy file",
   "main": "./lib/file-copy-fs",
   "bin": {
-    "file-copy-fs": "fcopy-fs.js"
+    "fscopy": "./bin/fcopy-fs.js"
   },
   "directories": {
     "lib": "lib",
