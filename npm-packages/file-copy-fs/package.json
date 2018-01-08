@@ -5,7 +5,8 @@
   "main": "./lib/file-copy-fs",
   "bin": {
     "fsscopy": "./bin/scopy.js",
-    "fslcopy": "./bin/lcopy.js"
+    "fslcopy": "./bin/lcopy.js",
+    "fcheck": "./bin/fcheck.js"
   },
   "directories": {
     "lib": "lib",

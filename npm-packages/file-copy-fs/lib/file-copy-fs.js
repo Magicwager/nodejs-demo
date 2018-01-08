@@ -1,4 +1,6 @@
 const fs=require('fs');
+const glob = require('glob');
+const path = require('path');
 /* writeFileSync,readFileSyn:适合小文件的读写，这是一次性将全部内容读写到内存中，然后再一次性全部写入文件中
  */
 const scopy=function(src,dest){
@@ -9,9 +11,19 @@ const lcopy=function(src,dest){
   fs.createReadStream(src).pipe(fs.createWriteStream(dest))
 
 }
+const fcheck = function(list){
+  const pattern = path.join(list, '**/*');
+  const enters = glob.sync(pattern);
+  enters.forEach(function(item,index){
+    console.log(item)
+  })
+}
 exports.smallCopy=function(argv){
   scopy(argv[0],argv[1])
 }
 exports.largeCopy=function(argv){
   lcopy(argv[0],argv[1])
+}
+exports.fcheck = function(argv){
+  fcheck(argv[0])
 }
