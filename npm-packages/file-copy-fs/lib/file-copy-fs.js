@@ -11,12 +11,21 @@ const lcopy=function(src,dest){
   fs.createReadStream(src).pipe(fs.createWriteStream(dest))
 
 }
-const fcheck = function(list){
-  const pattern = path.join(list, '**/*');
+const fcheck = function(list,extension){
+  const pattern = path.join(list, '*'+extension);
   const enters = glob.sync(pattern);
+  let name = [];
+  const p = /[0-9].[0-9]{0,6}/
   enters.forEach(function(item,index){
-    console.log(item)
+    console.log(item);
+    let s = item.match(p)
+    console.log(s);
+   
+
   })
+
+  const fileArray = fs.readdirSync(list);
+  console.log(fileArray)
 }
 exports.smallCopy=function(argv){
   scopy(argv[0],argv[1])
@@ -25,5 +34,5 @@ exports.largeCopy=function(argv){
   lcopy(argv[0],argv[1])
 }
 exports.fcheck = function(argv){
-  fcheck(argv[0])
+  fcheck(argv[0],argv[1])
 }
