@@ -15,17 +15,16 @@ const fcheck = function(list,extension){
   const pattern = path.join(list, '*'+extension);
   const enters = glob.sync(pattern);
   let name = [];
-  const p = /[0-9].[0-9]{0,6}/
+  const p = /-\d+(\.\d+)*/
   enters.forEach(function(item,index){
-    console.log(item);
-    let s = item.match(p)
-    console.log(s);
-   
-
+    let a = item.split(p)
+    if (a.length = 1){
+      a = a[0].split(""+extension)
+    }
+    console.log(a);
+    name.push(a[0]);
   })
-
-  const fileArray = fs.readdirSync(list);
-  console.log(fileArray)
+  console.log(name)
 }
 exports.smallCopy=function(argv){
   scopy(argv[0],argv[1])
