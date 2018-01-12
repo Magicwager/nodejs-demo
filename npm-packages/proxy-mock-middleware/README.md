@@ -12,13 +12,13 @@ npm install proxy-mock-middleware
 * 使用
 
 
-	1.在项目的根目录创建两个配置文件，分别是`pmm.config.js`与`pmm.mock.js`。分别是服务代理配置	以及本地模拟数据配置。如下所示：
+1.在项目的根目录创建两个配置文件，分别是`pmm.config.js`与`pmm.mock.js`。分别是服务代理配置	以及本地模拟数据配置。如下所示：
 
 
-	**pmm.config.js**
+**pmm.config.js**
 
 
-	```
+```
 	const svrConfig = {
 	    host: "127.0.0.1",
 	    port: 3000,//服务端口
@@ -42,12 +42,14 @@ npm install proxy-mock-middleware
 	    staticConfig : staticConfig
   };
 	
-	```
+```
 
-	**pmm.mock.js**
 
-	```
-	module.exports = {
+
+**pmm.mock.js**
+
+```
+module.exports = {
     "GET": [{
         "/bd/materialclass/list": "./mock/list.json"
       }
@@ -59,13 +61,17 @@ npm install proxy-mock-middleware
   
     ]
   }
-  
-	```
-	其中`"/bd/materialclass/list"`表示真实的接口地址，`"./mock/list.json"`为本地接口数据的json文件
 
-	2.在`gulpfile.js`中引用该插件，如下所示：
+```
 
-	```
+
+
+
+其中`"/bd/materialclass/list"`表示真实的接口地址，`"./mock/list.json"`为本地接口数据的json文件
+
+2.在`gulpfile.js`中引用该插件，如下所示：
+
+```
 	var gulp = require('gulp');
 	var less = require('gulp-less');
 	var clean = require('gulp-clean');
@@ -87,15 +93,15 @@ npm install proxy-mock-middleware
 	var DevServer = require("portal-fe-devServer");
 	
 	
-	```
+```
 
-	3.然后配置一个gulp任务，用来执行它的start方法启动服务，如下：
+3.然后配置一个gulp任务，用来执行它的start方法启动服务，如下：
 
-	```
+```
 	gulp.task('dev-server', function () {
     	epm.start()
 	});
-	```
+```
 
 
 
