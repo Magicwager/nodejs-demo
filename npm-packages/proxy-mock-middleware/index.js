@@ -5,7 +5,7 @@ var proxy = require('http-proxy-middleware');
 var app = express();
 var router = express.Router();
 var mockConfig, svrConfig, proxyConfig, staticConfig;
-var epmConfig = require(path.resolve(".", "epm.config.js"));
+var epmConfig = require(path.resolve(".", "pmm.config.js"));
 try {
     //读取服务器配置
     svrConfig = epmConfig.svrConfig;
@@ -20,10 +20,10 @@ try {
   
   }
   try {
-    mockConfig = require(path.resolve(".", "epm.mock.js"));
+    mockConfig = require(path.resolve(".", "pmm.mock.js"));
   } catch (e) {
     console.log(chalk.red(e));
-    console.log("[epm] Please check the configuration file");
+    console.log("[pmm] Please check the configuration file");
     mockConfig = undefined;
   } finally {
   
@@ -68,7 +68,7 @@ function server() {
   
     app.listen(svrConfig.port, svrConfig.host, function() {
       console.log(chalk.yellow("\n/******************** Start dev server *****************/\n"));
-      console.log(chalk.green(`[epm] : Listening on port http://${svrConfig.host}:${svrConfig.port}`));
+      console.log(chalk.green(`[pmm] : Listening on port http://${svrConfig.host}:${svrConfig.port}`));
       console.log(chalk.yellow("\n/******************** O(∩_∩)O *****************/\n"));
     });
   
