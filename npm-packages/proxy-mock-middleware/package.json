@@ -1,6 +1,6 @@
 {
   "name": "proxy-mock-middleware",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Express middleware to proxy request to another host and mock data",
   "main": "index.js",
   "scripts": {
