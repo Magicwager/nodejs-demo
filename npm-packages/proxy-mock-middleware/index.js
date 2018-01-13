@@ -5,14 +5,14 @@ var proxy = require('http-proxy-middleware');
 var app = express();
 var router = express.Router();
 var mockConfig, svrConfig, proxyConfig, staticConfig;
-var epmConfig = require(path.resolve(".", "pmm.config.js"));
+var pmmConfig = require(path.resolve(".", "pmm.config.js"));
 try {
     //读取服务器配置
-    svrConfig = epmConfig.svrConfig;
+    svrConfig = pmmConfig.svrConfig;
     //读取代理配置
-    proxyConfig = epmConfig.proxyConfig;
+    proxyConfig = pmmConfig.proxyConfig;
     //读取静态资源配置
-    staticConfig = epmConfig.staticConfig;
+    staticConfig = pmmConfig.staticConfig;
   } catch (e) {
     console.log(chalk.red(e));
     process.exit(0);
@@ -37,18 +37,16 @@ function server() {
     console.log(path.resolve('.', staticConfig.folder))
     //判断是否启用mock
       console.log(chalk.yellow("\n/******************** Start loading proxy server ********************/\n"));
-      /* proxyConfig.forEach(function(element) {
+      proxyConfig.forEach(function(element) {
         if (element.enable) {
-          //app.use(element.router, proxy(element.url, element.options));
-          app.use('/uitemplate_web/static/js/rt/templetutils.js', proxy('/uitemplate_web/static/js/rt/templetutils.js', { target: '127.0.0.1:8080',changeOrigin: true }));
-          console.log(chalk.green(`[proxy] : ${element.router} to ${element.url}`));
+          const apiProxy = proxy(element.router, { target: element.url,changeOrigin: true });//将服务器代理到localhost:8080端口上[本地服务器为localhost:3000]
+          app.use(element.router+'/*', apiProxy)
+          console.log(chalk.green(`[proxy] : ${element.router} to ${element.url+element.router}`));
         }
-      }); */
-      const apiProxy = proxy(proxyConfig.router, { target: proxyConfig.url,changeOrigin: true });//将服务器代理到localhost:8080端口上[本地服务器为localhost:3000]
-      app.use(proxyConfig.router+'/*', apiProxy)
-      console.log(chalk.green(`[proxy] : ${proxyConfig.router} to ${proxyConfig.url+proxyConfig.router}`));
+      });
       console.log(chalk.yellow("\n/******************** Proxy server loaded completed *****************/\n"));
-
+    //判断是否启用mock
+    if(svrConfig.mockenable){
       console.log(chalk.yellow("\n/******************** Start loading mock server ********************/\n"));
       for (let item in mockConfig) {
         for (let i = 0; i < mockConfig[item].length; i++) {
@@ -64,8 +62,8 @@ function server() {
         }
       }
       console.log(chalk.yellow("\n/******************** Mock server loaded completed *****************/\n"));
-      app.use(router);
-  
+    }
+    app.use(router);
     app.listen(svrConfig.port, svrConfig.host, function() {
       console.log(chalk.yellow("\n/******************** Start dev server *****************/\n"));
       console.log(chalk.green(`[pmm] : Listening on port http://${svrConfig.host}:${svrConfig.port}`));

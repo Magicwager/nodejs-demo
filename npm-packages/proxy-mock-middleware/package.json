@@ -1,10 +1,13 @@
 {
   "name": "proxy-mock-middleware",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Express middleware to proxy request to another host and mock data",
   "main": "index.js",
+  "bin": {
+    "test": "node ./test/bin/test.js"
+  },
   "scripts": {
-    "test": "test"
+    "pmmtest": "cd test && node ./bin/test.js"
   },
   "repository": {
     "type": "git",

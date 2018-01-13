@@ -1,10 +1,10 @@
 module.exports = {
     "GET": [{
-        "/bd/materialclass/list": "./mock/list.json"
+        "/test/hello": "./mock/hello.json"
       }
     ],
     "POST": [{
-        "/User/Post": "./mock/test.json"
+        
       },
       
   
