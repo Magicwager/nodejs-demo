@@ -4,7 +4,7 @@
   "description": "Express middleware to proxy request to another host and mock data",
   "main": "index.js",
   "bin": {
-    "test": "node ./test/bin/test.js"
+    
   },
   "scripts": {
     "pmmtest": "cd test && node ./bin/test.js"
