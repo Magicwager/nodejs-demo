@@ -72,34 +72,15 @@ module.exports = {
 2.在`gulpfile.js`中引用该插件，如下所示：
 
 ```
-	var gulp = require('gulp');
-	var less = require('gulp-less');
-	var clean = require('gulp-clean');
-	var babel = require('gulp-babel');
-	var copy = require('gulp-copy');
-	var concat = require('gulp-concat');
-	var rename = require('gulp-rename');
-	var util = require('gulp-util');
-	var minifycss = require('gulp-minify-css');
-	var uglify = require('gulp-uglify');
-	var sourcemaps = require('gulp-sourcemaps');
-	var koa = require('koa');
-	var app = koa();
-	var cfg = require('./conf/config');
-	var zip = require('gulp-zip');
-	var fs = require('fs');
-	var i18n = require('gulp-html-i18n');
-	**var epm = require('./express-proxy-mock');**
-	var DevServer = require("portal-fe-devServer");
-	
-	
+	**var pmm = require('proxy-mock-middleware');**
+
 ```
 
 3.然后配置一个gulp任务，用来执行它的start方法启动服务，如下：
 
 ```
 	gulp.task('dev-server', function () {
-    	epm.start()
+    	pmm.start()
 	});
 ```
 
