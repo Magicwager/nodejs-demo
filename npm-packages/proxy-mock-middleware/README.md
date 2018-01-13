@@ -24,14 +24,15 @@ npm install proxy-mock-middleware
 	    port: 3000,//服务端口
 	    //true启用静默模式，紧紧显示错误和警告。
 	    noInfo : false,
+	    mockenable:true,//是否启用本地模拟数据
 	    proName:'/bd'//项目名称
   };
   const proxyConfig = 
-  {
+  [{
 	    enable : true,//是否代理
 	    router: "/uitemplate_web",//代理目录
 	    url: "http://workbenchdev.yyuap.com"//代理远程地址
-  };
+  }];
   const staticConfig = {
     	folder : "dist"//静态资源托管目录，即前端工程的静态文件目录
     
